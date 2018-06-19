@@ -7,21 +7,21 @@ Usage:
 ```julia
 julia> using PrintLog
 
-julia> @printlog "bf.log"
+julia> @printlog "junk.log"
 INFO: `print` and `println` will be logged into file `bf.log`
 
-julia> println("bufan")
-bufan
+julia> println("junk")
+junk
 
 julia> @noprintlog
 INFO: `print` and `println` are resumed.
 
-julia> println("fanfan")
-fanfan
+julia> println("junk")
+junk
 ```
-And here is what `bf.log` looks like:
+And here is what `junk.log` looks like:
 ```txt
-bufan
+junk
 ```
 
 ---
