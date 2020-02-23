@@ -21,9 +21,9 @@ macro printlog(file, silent=false)
     @eval begin
         import Base.println, Base.print, Suppressor.@suppress
         @suppress Base.println(xs...) =
-            open(f -> (println(f, xs...); println(STDOUT, xs...)), $file, "a")
+            open(f -> (println(f, xs...); println(stdout, xs...)), $file, "a")
         @suppress Base.print(xs...) =
-            open(f -> (print(f, xs...); print(STDOUT, xs...)), $file, "a")
+            open(f -> (print(f, xs...); print(stdout, xs...)), $file, "a")
     end
     silent != :silent &&
         @info("`print` and `println` will be logged into file `$file`")
@@ -42,8 +42,8 @@ Silent mode.
 macro noprintlog(silent=false)
     @eval begin
         import Base.println, Base.print, Suppressor.@suppress
-        @suppress Base.println(xs...) = println(STDOUT, xs...)
-        @suppress Base.print(xs...) = print(STDOUT, xs...)
+        @suppress Base.println(xs...) = println(stdout, xs...)
+        @suppress Base.print(xs...) = print(stdout, xs...)
     end
     silent != :silent &&
         @info("`print` and `println` are resumed.")
