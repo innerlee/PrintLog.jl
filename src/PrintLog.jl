@@ -26,7 +26,7 @@ macro printlog(file, silent=false)
             open(f -> (print(f, xs...); print(STDOUT, xs...)), $file, "a")
     end
     silent != :silent &&
-        info("`print` and `println` will be logged into file `$file`")
+        @info("`print` and `println` will be logged into file `$file`")
     nothing
 end
 
@@ -46,7 +46,7 @@ macro noprintlog(silent=false)
         @suppress Base.print(xs...) = print(STDOUT, xs...)
     end
     silent != :silent &&
-        info("`print` and `println` are resumed.")
+        @info("`print` and `println` are resumed.")
     nothing
 end
 
